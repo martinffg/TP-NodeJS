@@ -1,0 +1,21 @@
+{
+  "name": "tp-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinffg/TP-NodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinffg/TP-NodeJS/issues"
+  },
+  "homepage": "https://github.com/martinffg/TP-NodeJS#readme"
+}
