@@ -7,21 +7,29 @@ const URI = `https://fakestoreapi.com/products`;
 // Defino la función asíncrona
 const fetchDatos = async (uri,config) => {
   try {
+    // cambia el fetch según el parámetro config
     if (config == "") {
       const response = await fetch(uri);
-      const data = await response.json();
-      console.log(data);
+      processResponse(response);
     } else {
       const response = await fetch(uri,config);
-      const data = await response.json();
-      console.log(data);
+      processResponse(response);
     }
-    
   } catch (error) {
     console.error(error);
   }
-};
 
+  // función extraida para modularizar la validación de la respuesta http y su procesamiento  
+  async function processResponse(response) {
+    // analizo la respuesta http, si es 200 (ok) procedo con la impresión de datos.
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  }
+};
 
 // fetchDatos(URI)  // con esto probé que la funcion asyncrona trahía los datos.
 
@@ -63,8 +71,6 @@ switch(comandoHttp){
           }),
         };
         fetchDatos(URI + comandos[0].slice(8),configPost);
-
-
         break
     case "DELETE":
         console.log("Producto eliminado.  Su id era" , comandos[0].slice(9));
